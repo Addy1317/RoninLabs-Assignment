@@ -31,7 +31,8 @@ namespace RoninLabs
 
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
-                Jump();
+                Debug.Log("Jump");
+                PlayerJump();
             }
         }
 
@@ -56,8 +57,9 @@ namespace RoninLabs
             }
         }
 
-        private void Jump()
+        private void PlayerJump()
         {
+            //Hooke's Law
             float compressAmount = initialJumpPadHeight - transform.position.y;
             float jumpForceWithSpring = jumpForce + (compressAmount * springStiffness);
             rb.AddForce(Vector2.up * jumpForceWithSpring, ForceMode2D.Impulse);
